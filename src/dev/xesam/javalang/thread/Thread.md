@@ -38,4 +38,13 @@
     线程已经终止
 
 
-Thread1.java //打印6中状态
+## 线程优先级
+
+    setPriority()
+
+    Thread.MIN_PRIORITY
+    Thread.MAX_PRIORITY
+    Thread.NORMAL_PRIORITY
+
+setPriority() 可能会影响程序在不同平台的表现，因为不同的平台对不同优先级的线程的处理策略不同。
+
