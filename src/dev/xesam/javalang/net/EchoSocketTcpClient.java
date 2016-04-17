@@ -1,5 +1,7 @@
 package dev.xesam.javalang.net;
 
+import dev.xesam.javalang.tools.L;
+
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -7,12 +9,12 @@ import java.net.Socket;
 /**
  * Created by xe on 14-11-24.
  */
-public class EchoSocketClient {
+public class EchoSocketTcpClient {
 
     public static void main(String[] args) {
 
-        EchoSocketClient echoSocketClient = new EchoSocketClient();
-        echoSocketClient.requestEcho();
+        EchoSocketTcpClient echoSocketTcpClient = new EchoSocketTcpClient();
+        echoSocketTcpClient.requestEcho();
 
 //        echoSocketClient.httpGet();
 
@@ -34,14 +36,14 @@ public class EchoSocketClient {
             bufferedWriter.write(send);
             bufferedWriter.write(SocketConfig.ECHO_CRLF);
             bufferedWriter.flush();
-            System.out.println("send:" + send);
+            L.log("send:" + send);
 
             InputStream inputStream = socket.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
             String line = bufferedReader.readLine();
-            System.out.println("receive:" + line);
+            L.log("receive:" + line);
 
             socket.close();
         } catch (IOException e) {

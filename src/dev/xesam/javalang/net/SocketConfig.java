@@ -7,4 +7,6 @@ public final class SocketConfig {
     public static final String ECHO_SERVER_HOST = "127.0.0.1";
     public static final String ECHO_CRLF = "\r\n";
     public static final int ECHO_SERVER_PORT = 10001;
+
+    public static final int UDP_ECHO_SERVER_PORT = 10002;
 }

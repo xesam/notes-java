@@ -3,35 +3,37 @@ package dev.xesam.javalang.net;
 import dev.xesam.javalang.tools.L;
 
 import java.io.*;
-import java.net.InetSocketAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.*;
+import java.nio.charset.Charset;
 
 /**
  * Created by xe on 11/20/15.
  */
-public class EchoSocketServer {
+public class EchoSocketUdpServer {
 
     public static void main(String[] args) {
-        EchoSocketServer echoSocketServer = new EchoSocketServer();
-        echoSocketServer.start();
+        EchoSocketUdpServer echoSocketTcpServer = new EchoSocketUdpServer();
+        echoSocketTcpServer.start();
     }
 
-    public EchoSocketServer() {
+    public EchoSocketUdpServer() {
 
     }
 
     public void start() {
-        InetSocketAddress inetSocketAddress = new InetSocketAddress(SocketConfig.ECHO_SERVER_HOST, SocketConfig.ECHO_SERVER_PORT);
+        InetSocketAddress inetSocketAddress = new InetSocketAddress(SocketConfig.ECHO_SERVER_HOST, SocketConfig.UDP_ECHO_SERVER_PORT);
         try {
-            ServerSocket serverSocket = new ServerSocket();
-            serverSocket.bind(inetSocketAddress);
+            DatagramSocket datagramSocket = new DatagramSocket(null);
+            datagramSocket.bind(inetSocketAddress);
+            byte[] bytes = new byte[1024];
             while (true) {
                 L.log("listening:" + inetSocketAddress);
-                Socket socket = serverSocket.accept();
-                L.log("connected from :" + socket.getRemoteSocketAddress());
+                DatagramPacket packet = new DatagramPacket(bytes, bytes.length);
+                datagramSocket.receive(packet);
+                L.log(new String(packet.getData(), Charset.defaultCharset().name()));
 
-                new Handler(serverSocket, socket).start();
+                packet.setAddress(packet.getAddress());
+                datagramSocket.send(packet);
             }
         } catch (IOException e) {
             e.printStackTrace();
