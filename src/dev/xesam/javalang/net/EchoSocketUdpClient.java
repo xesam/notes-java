@@ -34,6 +34,7 @@ public class EchoSocketUdpClient {
             datagramSocket.receive(receivePacket);
 
             L.log("receive:" + new String(bytes));
+            datagramSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
