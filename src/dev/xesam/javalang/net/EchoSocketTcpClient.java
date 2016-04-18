@@ -27,7 +27,7 @@ public class EchoSocketTcpClient {
     }
 
     public void requestEcho() {
-        InetSocketAddress inetSocketAddress = new InetSocketAddress(SocketConfig.ECHO_SERVER_HOST, SocketConfig.ECHO_SERVER_PORT);
+        InetSocketAddress inetSocketAddress = new InetSocketAddress(SocketConfig.ECHO_SERVER_HOST, SocketConfig.TCP_ECHO_SERVER_PORT);
         try {
             Socket socket = new Socket();
             socket.connect(inetSocketAddress);

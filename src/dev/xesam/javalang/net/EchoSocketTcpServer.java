@@ -22,7 +22,7 @@ public class EchoSocketTcpServer {
     }
 
     public void start() {
-        InetSocketAddress inetSocketAddress = new InetSocketAddress(SocketConfig.ECHO_SERVER_HOST, SocketConfig.ECHO_SERVER_PORT);
+        InetSocketAddress inetSocketAddress = new InetSocketAddress(SocketConfig.ECHO_SERVER_HOST, SocketConfig.TCP_ECHO_SERVER_PORT);
         try {
             ServerSocket serverSocket = new ServerSocket();
             serverSocket.bind(inetSocketAddress);
