@@ -1,0 +1,2 @@
+##几个IO子类的常用情况
+FileInputStream
