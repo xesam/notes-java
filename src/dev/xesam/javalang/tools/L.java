@@ -15,4 +15,10 @@ public class L {
         }
         System.out.println(stringBuilder.toString());
     }
+
+    public static void logList(Object[] objs) {
+        for (Object obj : objs) {
+            System.out.println(obj.toString());
+        }
+    }
 }
