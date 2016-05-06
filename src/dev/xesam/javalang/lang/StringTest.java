@@ -1,5 +1,11 @@
 package dev.xesam.javalang.lang;
 
+import com.sun.jndi.toolkit.url.Uri;
+
+import java.net.MalformedURLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by xe on 16-4-22.
  */
@@ -18,5 +24,26 @@ public class StringTest {
         for (char c : "中国".toCharArray()) {
             System.out.println(c);
         }
+
+        String url = "http://xesam.github.io/html/css/app.css?v=v2";
+        try {
+            Uri uri = new Uri(url);
+            System.out.println(getV(uri));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private static Pattern pattern = Pattern.compile("(?:\\?|&)v=([^=]+)");
+
+    public static String getV(Uri uri) {
+        Matcher matcher = pattern.matcher(uri.getQuery());
+        if (matcher.find()) {
+            if (matcher.groupCount() == 1) {
+                return matcher.group(1);
+            }
+        }
+        return null;
     }
 }
