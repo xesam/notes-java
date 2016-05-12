@@ -5,6 +5,9 @@ import dev.xesam.javalang.tools.L;
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.util.Scanner;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 /**
  * Created by xe on 14-11-24.
@@ -14,16 +17,7 @@ public class EchoSocketTcpClient {
     public static void main(String[] args) {
 
         EchoSocketTcpClient echoSocketTcpClient = new EchoSocketTcpClient();
-        echoSocketTcpClient.requestEcho();
-
-//        echoSocketClient.httpGet();
-
-//        ExecutorService executorService = Executors.newFixedThreadPool(1);
-//
-//        for (int i = 0; i < 10; i++) {
-//            executorService.submit(new SimpleSocketRequest(i));
-//        }
-//        executorService.shutdown();
+        echoSocketTcpClient.requestEcho2();
     }
 
     public void requestEcho() {
@@ -45,6 +39,38 @@ public class EchoSocketTcpClient {
             String line = bufferedReader.readLine();
             L.log("receive:" + line);
 
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void requestEcho2() {
+        InetSocketAddress inetSocketAddress = new InetSocketAddress(SocketConfig.ECHO_SERVER_HOST, SocketConfig.TCP_ECHO_SERVER_PORT);
+        Scanner scanner = new Scanner(System.in);
+        Supplier<String> input = scanner::nextLine;
+        try {
+            Socket socket = new Socket();
+            socket.connect(inetSocketAddress);
+
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+
+            System.out.println("Enter text:");
+            Stream.generate(input).map(send -> {
+                try {
+                    bufferedWriter.write(send);
+                    bufferedWriter.write(SocketConfig.ECHO_CRLF);
+                    bufferedWriter.flush();
+                    String line = bufferedReader.readLine();
+                    L.log("receive:" + line);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                L.log("send:" + send);
+                return send;
+            }).allMatch(send -> !"quit".equalsIgnoreCase(send));
+            
             socket.close();
         } catch (IOException e) {
             e.printStackTrace();
