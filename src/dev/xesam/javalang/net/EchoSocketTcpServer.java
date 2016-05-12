@@ -59,11 +59,11 @@ public class EchoSocketTcpServer {
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
                 String line;
                 while ((line = bufferedReader.readLine()) != null) {
-                    L.log(getName(), "receive:", line);
+                    L.log(getName(), "receive from:", line);
                     bufferedWriter.write(line);
                     bufferedWriter.write(SocketConfig.ECHO_CRLF);
                     bufferedWriter.flush();
-                    L.log(getName(), "send:", line);
+                    L.log(getName(), "send back:", line);
                 }
                 L.log(getName(), "closed");
             } catch (IOException e) {
