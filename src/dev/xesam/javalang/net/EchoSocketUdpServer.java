@@ -12,8 +12,8 @@ import java.nio.charset.Charset;
 public class EchoSocketUdpServer {
 
     public static void main(String[] args) {
-        EchoSocketUdpServer echoSocketTcpServer = new EchoSocketUdpServer();
-        echoSocketTcpServer.start();
+        EchoSocketUdpServer echoSocketUdpServer = new EchoSocketUdpServer();
+        echoSocketUdpServer.start();
     }
 
     public EchoSocketUdpServer() {

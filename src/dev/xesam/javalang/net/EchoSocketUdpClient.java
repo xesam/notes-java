@@ -13,8 +13,8 @@ import java.net.InetSocketAddress;
 public class EchoSocketUdpClient {
 
     public static void main(String[] args) {
-        EchoSocketUdpClient echoSocketTcpClient = new EchoSocketUdpClient();
-        echoSocketTcpClient.requestEcho();
+        EchoSocketUdpClient echoSocketUdpClient = new EchoSocketUdpClient();
+        echoSocketUdpClient.requestEcho();
     }
 
     public void requestEcho() {
