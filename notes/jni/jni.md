@@ -1,6 +1,6 @@
-#JNI
+# JNI
 
-##定义类
+## 定义类
 
     package dev.xesam;
 
@@ -18,17 +18,17 @@
         public static native void sayHello();
     }
 
-##编译类
+## 编译类
 
     javah dev/xesam/Hello.java
 
-##javah生成接口文件
+## javah生成接口文件
 
     javah dev.xesam.Hello
 
 得到 dev_xesam_Hello.h
 
-##实现生成的接口
+## 实现生成的接口
 
 dev_xesam_Hello.cpp：
 
@@ -39,7 +39,7 @@ dev_xesam_Hello.cpp：
         printf("%s\n", "Hello xesam");
     }
 
-##编译打包
+## 编译打包
 
     gcc -I/usr/local/lib/jdk/include/ -I/usr/local/lib/jdk/include/linux/ -fPIC -c dev_xesam_Hello.cpp
 
@@ -49,11 +49,11 @@ dev_xesam_Hello.cpp：
 
     cp libhello.so.1.0 libhello.so
 
-##将so加入java路径
+## 将so加入java路径
 
     export LD_LIBRARY_PATH=`pwd`:$LD_LIBRARY_PATH
 
-##执行
+## 执行
 
     java dev.xesam.Hello
 
