@@ -16,6 +16,7 @@ public class MacTest {
                     .stream()
                     .forEach(networkInterface -> {
                         try {
+                            System.out.println(networkInterface.getName());
                             byte[] bytes = networkInterface.getHardwareAddress();
                             if (bytes == null) {
                                 return;
@@ -24,6 +25,7 @@ public class MacTest {
                                 System.out.print(String.format("%02x", bytes[i]));
                             }
                             System.out.println("");
+
                         } catch (SocketException e) {
                             e.printStackTrace();
                         }
