@@ -3,6 +3,7 @@ package dev.xesam.javalang.net;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
+import java.util.Collections;
 import java.util.Enumeration;
 
 /**
@@ -31,9 +32,8 @@ public class InetAddressTest {
         System.out.println("----------------------");
         System.out.println(networkInterface.toString());
         Enumeration<InetAddress> elements = networkInterface.getInetAddresses();
-        while (elements.hasMoreElements()) {
-            InetAddress inetAddress = elements.nextElement();
-            System.out.println(inetAddress);
-        }
+        Collections.list(elements)
+                .stream()
+                .forEach(inetAddress -> System.out.println(inetAddress));
     }
 }
