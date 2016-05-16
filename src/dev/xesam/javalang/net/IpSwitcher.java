@@ -10,7 +10,9 @@ public class IpSwitcher {
 
     public static void main(String[] args) {
         IpSwitcher ipSwitcher = new IpSwitcher("test.chelaile.net.cn");
+        System.out.println(ipSwitcher.getHost());
         ipSwitcher.overture();
+        System.out.println(ipSwitcher.getHost());
     }
 
     private final String domain;
@@ -28,7 +30,6 @@ public class IpSwitcher {
             InetAddress inetAddress = InetAddress.getByName(domain);
             ip = inetAddress.getHostAddress();
             used = ip;
-            System.out.println(ip);
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
