@@ -1,5 +1,6 @@
 package dev.xesam.javalang.net;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -12,14 +13,14 @@ import java.util.Enumeration;
  */
 public class InetAddressTest {
 
-    public static void main(String[] args) throws UnknownHostException {
+    public static void main(String[] args) throws IOException {
         testNetworkInterface();
         testIp();
     }
 
-    public static void testIp() throws UnknownHostException {
-        InetAddress	names[]	=InetAddress.getAllByName("www.baidu.com");
-        for(InetAddress	element	:	names)	{
+    public static void testIp() throws IOException {
+        InetAddress names[] = InetAddress.getAllByName("www.baidu.com");
+        for (InetAddress element : names) {
             System.out.println(element);
         }
     }
@@ -43,6 +44,9 @@ public class InetAddressTest {
         Enumeration<InetAddress> elements = networkInterface.getInetAddresses();
         Collections.list(elements)
                 .stream()
-                .forEach(inetAddress -> System.out.println(inetAddress));
+                .forEach(inetAddress -> {
+                    System.out.println(inetAddress);
+                    System.out.println(inetAddress.isLoopbackAddress());
+                });
     }
 }
