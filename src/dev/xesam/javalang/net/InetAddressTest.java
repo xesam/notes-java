@@ -3,6 +3,7 @@ package dev.xesam.javalang.net;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.Collections;
 import java.util.Enumeration;
 
@@ -11,8 +12,16 @@ import java.util.Enumeration;
  */
 public class InetAddressTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException {
         testNetworkInterface();
+        testIp();
+    }
+
+    public static void testIp() throws UnknownHostException {
+        InetAddress	names[]	=InetAddress.getAllByName("www.baidu.com");
+        for(InetAddress	element	:	names)	{
+            System.out.println(element);
+        }
     }
 
     public static void testNetworkInterface() {
