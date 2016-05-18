@@ -12,10 +12,7 @@ import java.util.stream.IntStream;
  */
 public class NioBlockingEchoClient {
     public static void main(String[] args) {
-        IntStream.range(0, 3).forEach((i) -> {
-            new BlockingEchoClient().start();
-        });
-
+        IntStream.range(0, 3).forEach((i) -> new BlockingEchoClient().start());
     }
 
     public static class BlockingEchoClient {
@@ -26,22 +23,19 @@ public class NioBlockingEchoClient {
                 socketChannel.connect(new InetSocketAddress("localhost", NioNonBlockingEchoServer.SERVER_PORT));
                 Charset charset = Charset.defaultCharset();
                 if (socketChannel.isConnected()) {
-
-                    StringBuilder sb = new StringBuilder();
-
-                    socketChannel.write(ByteBuffer.wrap("0123456789".getBytes()));
-//                    ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-//                    int count;
-//                    while ((count = socketChannel.read(byteBuffer)) != -1) {
-//                        System.out.println("count=" + count);
-//                        byteBuffer.flip();
-//                        System.out.println(charset.decode(byteBuffer));
-//                        if (byteBuffer.hasRemaining()) {
-//                            byteBuffer.compact();
-//                        } else {
-//                            byteBuffer.clear();
-//                        }
-//                    }
+                    socketChannel.write(ByteBuffer.wrap("01234567".getBytes()));
+                    ByteBuffer byteBuffer = ByteBuffer.allocate(8);
+                    while (socketChannel.read(byteBuffer) != -1) {
+                        boolean reachEnd = byteBuffer.hasRemaining();//没有读满则认为到达了结尾
+                        byteBuffer.flip();
+                        System.out.println(charset.decode(byteBuffer));
+                        if (reachEnd) {
+                            break;
+                        } else {
+                            byteBuffer.clear();
+                        }
+                    }
+                    socketChannel.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();

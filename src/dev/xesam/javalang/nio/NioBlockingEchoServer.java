@@ -35,25 +35,24 @@ public class NioBlockingEchoServer {
             }
         }
 
-        private void handle(SocketChannel socketChannel) {
+        private void handle(SocketChannel socketChannel) throws IOException {
             Charset charset = Charset.defaultCharset();
-            try {
-                System.out.println("\ncoming from " + socketChannel.getRemoteAddress());
-                ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-                while (socketChannel.read(byteBuffer) != -1) {
-                    byteBuffer.flip();
-                    System.out.print("[get]" + charset.decode(byteBuffer));
-                    byteBuffer.rewind();
-                    socketChannel.write(byteBuffer);
-                    if (byteBuffer.hasRemaining()) {
-                        byteBuffer.compact();
-                    } else {
-                        byteBuffer.clear();
-                    }
+            System.out.println("\ncoming from " + socketChannel.getRemoteAddress());
+            ByteBuffer byteBuffer = ByteBuffer.allocate(8);
+            while (socketChannel.read(byteBuffer) != -1) {
+                boolean reachEnd = byteBuffer.hasRemaining();//没有读满则认为到达了结尾
+                byteBuffer.flip();
+                System.out.println("[get]" + charset.decode(byteBuffer));
+                byteBuffer.rewind();
+                socketChannel.write(byteBuffer);
+                if (reachEnd) {
+                    System.out.println("break");
+                    break;
+                } else {
+                    byteBuffer.clear();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+            socketChannel.close();
 
         }
 
