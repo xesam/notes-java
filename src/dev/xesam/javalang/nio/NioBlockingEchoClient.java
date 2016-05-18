@@ -14,7 +14,6 @@ public class NioBlockingEchoClient {
     public static void main(String[] args) {
         IntStream.range(0, 10).forEach((i) -> new BlockingEchoClient().start());
 //        new BlockingEchoClient().start();
-//        new BlockingEchoClient().start();
     }
 
     public static class BlockingEchoClient {
