@@ -52,7 +52,7 @@ When data is written, it is written into a buffer. Anytime you access data in NI
 
     capacity = capacity
     limit = capacity
-    //copy data
+    //copy data : buffer[position..limit] --> buffer[0..limit-position]
     position = limit - position
 
 ## 随机读取方法

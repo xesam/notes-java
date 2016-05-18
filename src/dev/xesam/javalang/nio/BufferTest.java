@@ -15,6 +15,7 @@ public class BufferTest {
         test5();
         test6();
         test7();
+        test8();
     }
 
     public static ByteBuffer getBuffer() {
@@ -75,6 +76,16 @@ public class BufferTest {
         System.out.println("-------test7------");
         ByteBuffer buffer = getBuffer();
         buffer.clear();
+        Inspector.inspect(buffer);
+    }
+
+    public static void test8() {
+        System.out.println("-------test8------");
+        ByteBuffer buffer = getBuffer();
+        Inspector.inspect(buffer);
+        buffer.put((byte) 'a');
+        Inspector.inspect(buffer);
+        buffer.compact();
         Inspector.inspect(buffer);
     }
 
