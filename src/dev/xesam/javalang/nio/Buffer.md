@@ -22,6 +22,8 @@ When data is written, it is written into a buffer. Anytime you access data in NI
     limit = position
     position = 0
 
+两次连续执行之后：limit = position = 0
+
 ### rewind()
 
 为从缓冲区重新取出数据做准备，实际效果：
