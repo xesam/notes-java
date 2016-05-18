@@ -12,7 +12,9 @@ import java.util.stream.IntStream;
  */
 public class NioBlockingEchoClient {
     public static void main(String[] args) {
-        IntStream.range(0, 3).forEach((i) -> new BlockingEchoClient().start());
+        IntStream.range(0, 10).forEach((i) -> new BlockingEchoClient().start());
+//        new BlockingEchoClient().start();
+//        new BlockingEchoClient().start();
     }
 
     public static class BlockingEchoClient {
@@ -23,10 +25,26 @@ public class NioBlockingEchoClient {
                 socketChannel.connect(new InetSocketAddress("localhost", NioNonBlockingEchoServer.SERVER_PORT));
                 Charset charset = Charset.defaultCharset();
                 if (socketChannel.isConnected()) {
-                    socketChannel.write(ByteBuffer.wrap("01234567".getBytes()));
-                    ByteBuffer byteBuffer = ByteBuffer.allocate(8);
+                    ByteBuffer out = ByteBuffer.allocate(1024);
+                    out.put("0123456789".getBytes());
+                    out.flip();
+                    socketChannel.write(out);
+                    Thread.sleep(500);
+                    out.clear();
+                    out.put("abcdefghijklmn".getBytes()).put(NioBlockingEchoServer.END);
+                    out.flip();
+                    socketChannel.write(out);
+
+                    ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
                     while (socketChannel.read(byteBuffer) != -1) {
-                        boolean reachEnd = byteBuffer.hasRemaining();//没有读满则认为到达了结尾
+                        boolean reachEnd = false;
+                        int pos = byteBuffer.position();
+                        if (pos == 0) {
+                            reachEnd = true;
+                        }
+                        if (byteBuffer.get(pos - 1) == NioBlockingEchoServer.END) {
+                            reachEnd = true;
+                        }
                         byteBuffer.flip();
                         System.out.println(charset.decode(byteBuffer));
                         if (reachEnd) {
@@ -38,6 +56,8 @@ public class NioBlockingEchoClient {
                     socketChannel.close();
                 }
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
