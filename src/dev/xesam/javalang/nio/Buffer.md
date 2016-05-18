@@ -16,7 +16,7 @@ When data is written, it is written into a buffer. Anytime you access data in NI
 
 ### flip()
 
-向buffer里面写完数据之后，为从缓冲区取出数据做准备，实际效果：
+向buffer里面写完数据之后，为从缓冲区读取数据做准备，实际效果：
 
     capacity = capacity
     limit = position
@@ -26,7 +26,7 @@ When data is written, it is written into a buffer. Anytime you access data in NI
 
 ### rewind()
 
-为从缓冲区重新取出数据做准备，实际效果：
+为从缓冲区重新读取数据做准备，实际效果：
 
     capacity = capacity
     limit = limit
@@ -34,7 +34,7 @@ When data is written, it is written into a buffer. Anytime you access data in NI
 
 ### clear()
 
-为重新向缓冲区取出数据做准备，实际效果：
+为重新向缓冲区写入数据做准备，实际效果：
 
     capacity = capacity
     limit = capacity
