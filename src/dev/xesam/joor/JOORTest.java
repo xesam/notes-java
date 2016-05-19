@@ -1,14 +1,13 @@
 package dev.xesam.joor;
 
-import junit.framework.Assert;
-import junit.framework.TestCase;
 import org.joor.Reflect;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
  * Created by xe on 16-5-12.
  */
-public class JOORTest extends TestCase {
+public class JOORTest {
 
     public interface StringProxy {
         String substring(int beginIndex);
