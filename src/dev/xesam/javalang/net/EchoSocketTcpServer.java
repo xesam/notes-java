@@ -27,7 +27,7 @@ public class EchoSocketTcpServer {
             ServerSocket serverSocket = new ServerSocket();
             serverSocket.bind(inetSocketAddress);
             while (true) {
-                L.log("listening:" + inetSocketAddress);
+                L.log("listening:" + serverSocket);
                 Socket socket = serverSocket.accept();
                 L.log("connected from :" + socket.getRemoteSocketAddress());
 
