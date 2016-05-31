@@ -1,5 +1,7 @@
 #Thread
 
+线程不是语言概念，是操作系统的概念。
+
 ##线程的状态 Thread.State
 
 1. NEW
