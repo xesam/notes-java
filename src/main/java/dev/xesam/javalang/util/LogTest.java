@@ -12,6 +12,12 @@ public class LogTest {
     static Logger logger = LoggerFactory.getLogger(LogTest.class.getName());
 
     public static void main(String[] args) {
-        IntStream.range(0, 10).forEach(i -> logger.debug(i + ""));
+        IntStream.range(0, 3).forEach(i -> logger.debug(i + ""));
+        LogTest logTest = new LogTest();
+        logTest.log_1();
+    }
+
+    public void log_1() {
+        System.out.println("this is default");
     }
 }
