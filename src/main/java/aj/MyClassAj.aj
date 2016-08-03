@@ -38,4 +38,20 @@ public aspect MyClassAj {
         System.out.println("handle MyException");
         System.out.println("handle MyException:" + thisJoinPoint.getArgs()[0]);//与 arg() 的异同点
     }
+
+    //切入点
+    pointcut constructorPointCut():
+            call(aj.MyClass.new());
+
+    //通知块
+    before(): constructorPointCut(){
+        System.out.println("constructorPointCut");
+    }
+
+    pointcut getPointCut():
+            get(int aj.MyClass.age);
+
+    after() returning(int age):getPointCut(){
+        System.out.println("get age = " + age);
+    }
 }

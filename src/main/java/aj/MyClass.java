@@ -15,7 +15,10 @@ public class MyClass {
         } catch (MyException e) {
 //            System.err.println("error occur");
         }
+        System.out.println(myClass2.age);
     }
+
+    private int age = 20;
 
     public void foo(int value, String name) {
         System.out.println("Inside foo (int, String)");
