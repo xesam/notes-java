@@ -11,10 +11,12 @@ public aspect Clazz7Aj {
             fn2() && !within(aj.Clazz7Aj):
             "hehehe";
 
-    pointcut fn():
-            call(* aj.Clazz7.fn(int, String));
+    pointcut fn(Clazz7 clazz):
+            call(* aj.Clazz7.fn(int, String))
+            && this(clazz);
 
-    before(): fn(){
+    before(Clazz7 clazz): fn(clazz){
         System.out.println("aop:before fn");
+        clazz.fn2();
     }
 }

@@ -11,7 +11,7 @@ public class Clazz7 {
 
     public void fn(int age, String name) {
         System.out.println("age = " + age + ",name = " + name);
-        fn2();
+//        fn2(); //trigger ajc declare error
     }
 
     public void fn2() {
