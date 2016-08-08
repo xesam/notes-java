@@ -7,9 +7,15 @@
 
 方面 aspect
 
-通知 Advice
+## 连接点 join point
 
-连接点 join point
+程序运行过程中发生的各种事件。
 
-切入点 pointcut
+## 切入点 pointcut
+
+在程序运行过程中，会发生一些列的连接点，切入点的作用就是挑选出我们感兴趣的连接点。
+
+## 通知 Advice
+
+
 
