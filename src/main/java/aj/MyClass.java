@@ -20,6 +20,7 @@ public class MyClass {
 
     private int age = 20;
 
+    @MyAnnotation("name")
     public void foo(int value, String name) {
         System.out.println("Inside foo (int, String)");
         fn2();
