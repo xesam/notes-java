@@ -1,5 +1,6 @@
 package aj;
 
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 
@@ -11,5 +12,10 @@ public class Clazz6Aj {
     @Before("within(@aj.MyAnnotation *) || execution(@aj.MyAnnotation * *(..))")
     public void before() {
         System.out.println("Clazz6Aj before");
+    }
+
+    @After("within(@aj.MyAnnotation *) || execution(@aj.MyAnnotation * *(..))")
+    public void after() {
+        System.out.println("Clazz6Aj after");
     }
 }

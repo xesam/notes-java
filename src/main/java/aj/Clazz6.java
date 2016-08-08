@@ -11,5 +11,6 @@ public class Clazz6 {
 
     @MyAnnotation("name")
     public void fn(int age, String name) {
+        System.out.println("age = " + age + ",name = " + name);
     }
 }
