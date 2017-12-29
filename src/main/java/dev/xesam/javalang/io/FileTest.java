@@ -29,7 +29,7 @@ public class FileTest {
     }
 
     public static void testFile() throws IOException {
-        File file = new File("REAMME.md");
+        File file = new File("README.md");
         System.out.println("Absolute path = " + file.getAbsolutePath());
         System.out.println("Canonical path = " + file.getCanonicalPath());
         System.out.println("Name = " + file.getName());
