@@ -1,0 +1,20 @@
+story = "a tiny story"
+
+[local_users.data]
+width = 49.5
+height = 87.7
+size = 63
+
+[]
+comment=this is base property
+
+db.url=localhost
+db.username=root
+
+db.url<develop>=localhost
+db.username<develop>=root
+
+db.url<deploy>=192.168.1.101
+db.username<deploy>=app2499
+
+@profiles=deploy
