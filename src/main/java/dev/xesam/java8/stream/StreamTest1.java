@@ -3,6 +3,7 @@ package dev.xesam.java8.stream;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class StreamTest1 {
     @Test
     public void test1() {
-        long a = Arrays.asList(1, 2, 3, 4).stream()
+        long a = Stream.of(1, 2, 3, 4)
                 .filter(x -> x > 2)
                 .count();
         assertEquals(2, a);
