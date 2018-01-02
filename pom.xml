@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.xesam</groupId>
-    <artifactId>MyJava</artifactId>
+    <artifactId>my-java</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <build>
