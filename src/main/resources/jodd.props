@@ -1,20 +1,27 @@
 story = "a tiny story"
 
-[local_users.data]
-width = 49.5
-height = 87.7
-size = 63
+[section1]
+width = 149.5
+height = 187.7
+size = 163
+
+[section2]
+width = 249.5
+height = 287.7
+size = 263
 
 []
-comment=this is base property
+width = 349.5
+height = 387.7
+size = 363
 
-db.url=localhost
-db.username=root
+db.url=default_url
+db.username=default_username
 
-db.url<develop>=localhost
-db.username<develop>=root
+db.url<develop>=develop_url
+db.username<develop>=develop_username
 
-db.url<deploy>=192.168.1.101
-db.username<deploy>=app2499
+db.url<deploy>=deploy_url
+db.username<deploy>=deploy_username
 
-@profiles=deploy
+#@profiles=deploy
