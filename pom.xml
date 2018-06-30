@@ -26,6 +26,7 @@
         <module>jodd</module>
         <module>joor</module>
         <module>aop</module>
+        <module>lang</module>
     </modules>
 
     <dependencies>
