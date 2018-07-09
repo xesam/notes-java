@@ -27,6 +27,7 @@
         <module>joor</module>
         <module>aop</module>
         <module>lang</module>
+        <module>apache</module>
     </modules>
 
     <dependencies>
