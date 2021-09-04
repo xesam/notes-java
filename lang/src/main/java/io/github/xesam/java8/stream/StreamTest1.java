@@ -1,4 +1,4 @@
-package dev.xesam.java8.stream;
+package io.github.xesam.java8.stream;
 
 import org.junit.Test;
 

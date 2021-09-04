@@ -1,4 +1,4 @@
-package dev.xesam.java8.time;
+package io.github.xesam.java8.time;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;

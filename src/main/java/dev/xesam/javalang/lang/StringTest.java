@@ -1,8 +1,8 @@
 package dev.xesam.javalang.lang;
 
-import com.sun.jndi.toolkit.url.Uri;
 
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,7 +27,7 @@ public class StringTest {
 
         String url = "http://xesam.github.io/html/css/app.css?v=v2";
         try {
-            Uri uri = new Uri(url);
+            URL uri = new URL(url);
             System.out.println(getV(uri));
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -37,7 +37,7 @@ public class StringTest {
 
     private static Pattern pattern = Pattern.compile("(?:\\?|&)v=([^=]+)");
 
-    public static String getV(Uri uri) {
+    public static String getV(URL uri) {
         Matcher matcher = pattern.matcher(uri.getQuery());
         if (matcher.find()) {
             if (matcher.groupCount() == 1) {

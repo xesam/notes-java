@@ -1,9 +1,7 @@
-package dev.xesam.java8.time;
+package io.github.xesam.java8.time;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 /**
  * Created by xe on 18-1-2.
