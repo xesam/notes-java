@@ -56,8 +56,9 @@ public class MatcherTest {
 
     public static void inspectMatcherGroups(Matcher matcher) {
         for (int i = 0; i <= matcher.groupCount(); i++) {
-            System.out.printf("matcher.group(%d)= %s%n", i, matcher.group(i));
+            System.out.printf("group(%d) : %-6s ;", i, matcher.group(i));
         }
+        System.out.println();
     }
 
     public static void inspect(Matcher matcher) {
