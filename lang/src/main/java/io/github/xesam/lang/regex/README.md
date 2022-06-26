@@ -28,4 +28,10 @@ Pattern 是不可变的，因此是线程安全的。
 
     aPattern.matcher(str)
 
-## 
+## bounds
+
+需要注意 anchor 的含义。
+
+https://www.demo2s.com/android/android-matcher-useanchoringbounds-boolean-b-sets-the-anchoring-of-re.html
+
+https://www.demo2s.com/android/android-matcher-usetransparentbounds-boolean-b-sets-the-transparency.html
