@@ -1,4 +1,4 @@
-package io.github.xesam.apache.lang3;
+package lang3;
 
 import org.apache.commons.lang3.BitField;
 import org.junit.Assert;
