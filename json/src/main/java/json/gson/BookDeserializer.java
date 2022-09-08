@@ -1,4 +1,4 @@
-package com.github.xesam.json.gson;
+package json.gson;
 
 import com.google.gson.*;
 

@@ -1,4 +1,4 @@
-package com.github.xesam.json.gson;
+package json.gson;
 
 /**
  * Created by xesamguo@gmail.com on 17-2-10.
