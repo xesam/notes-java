@@ -197,8 +197,67 @@ TODO：链接管道的性能问题？
 
 ### 汇聚
 
+## 起始流
 
+### 创建流
 
+    Stream.empty
+    Stream.of
+    Stream.iterate
+    Stream.fenerate
+
+有序流，只定义在 IntStream 和 LongStream 中。
+
+    IntStream.range
+    IntStream.rangeClosed
+    
+合并流：
+
+    Stream.concat
+        
+Arrays
+
+    Arrays.stream
+    
+BufferedReader
+
+    BufferedReader.lines
+    
+*从 BufferedReader 所发出的数据本质上是串行的。*
+
+Files
+
+    Files.walk    
+    Files.find    
+    Files.list    
+    
+    lines //这是对 BufferedReader 的封装
+
+regex.Pattern
+
+    Pattern.splitAsStream
+   
+JarFiles
+
+    JarFiles.stream
+    
+ZipFile
+
+    ZipFile.stream
+    
+CharSequence
+
+    CharSequence.chars
+    CharSequence.codePoints
+    
+BitSet
+
+    BitSet.stream
+
+Random & SplittableRandom
+
+    
+### 分割迭代器
 
 
 
